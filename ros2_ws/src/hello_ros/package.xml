@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
+<!--
+  package.xml = the package MANIFEST.
+  It tells ROS 2 / colcon: the package name, version, who maintains it,
+  what it depends on, and HOW to build it.
+-->
+<package format="3">
+  <name>hello_ros</name>
+  <version>0.1.0</version>
+  <description>Lesson 02: my first ROS 2 package + node.</description>
+  <maintainer email="shubhamyadav.cdac11@gmail.com">Shubham</maintainer>
+  <license>MIT</license>
+
+  <!-- runtime dependency: rclpy = the ROS 2 Python client library -->
+  <exec_depend>rclpy</exec_depend>
+
+  <!-- build_type = how colcon builds this package. ament_python = a Python package. -->
+  <export>
+    <build_type>ament_python</build_type>
+  </export>
+</package>

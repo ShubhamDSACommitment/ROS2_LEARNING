@@ -1,0 +1,19 @@
+# ROS 2 / colcon build artifacts
+build/
+install/
+log/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# IDE
+.idea/
+.vscode/
+*.iml
+
+# macOS metadata junk (the ._* and .DS_Store files that showed up on the pendrive)
+.DS_Store
+._*
