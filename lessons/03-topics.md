@@ -65,6 +65,16 @@ So topics are the **wiring diagram** of the robot. A real node differs from our 
 
 Our `robot_status_publisher` is exactly the shape of a real **telemetry** node — and it maps directly to **WareFleet**: each robot's agent publishes `RobotState` (position, battery, status); the fleet manager subscribes to all of them (and we also bridge to MQTT — the same pub/sub idea on your Addverb-style bus).
 
+## ❓ How is a topic "created"?
+You never explicitly create it. A topic exists the moment a node references its name in a publisher/subscriber:
+```python
+self.create_publisher(String, 'robot/status', 10)   # the string 'robot/status' IS the topic
+```
+DDS auto-advertises + discovers it — there is no `admin.createTopic()`. This is like **MQTT** (implicit topics), *unlike* **Kafka** (pre-created partitions). Consequences:
+1. **Name is the contract** — publisher & subscriber must use the *identical* string or they never connect (silent, no error).
+2. **Type must match** (`String` both sides).
+3. **QoS must be compatible** (the `10` / reliability settings).
+
 ## Common errors
 - B receives nothing → topic name mismatch (must be identical string) or B started after A finished (no replay by default).
 - `colcon build` can't find `std_msgs` → ROS 2 not sourced before building.

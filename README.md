@@ -24,6 +24,11 @@ The building blocks I must understand before building WareFleet. Each lesson = o
 
 > Foundation first. Once Level 1 is solid, we apply it in the [WareFleet](https://github.com/ShubhamDSACommitment/warefleet) project.
 
+## Python notes (no prior Python experience)
+Since I come from Java/Go, [`python-notes/`](python-notes/) explains the Python we use, mapped to what I already know:
+- [python-essentials.md](python-notes/python-essentials.md) — classes, `self`, imports, callbacks, f-strings… vs Java/Go
+- [code-walkthrough.md](python-notes/code-walkthrough.md) — a node explained line-by-line (Python only)
+
 ## Layout
 ```
 lessons/        # one markdown note per concept (theory + run-on-Ubuntu commands)
