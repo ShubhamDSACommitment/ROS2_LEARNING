@@ -16,11 +16,13 @@ The building blocks I must understand before building WareFleet. Each lesson = o
 | 04 | [Services](lessons/04-services.md) | server + client | ✅ |
 | 05 | [Parameters](lessons/05-parameters.md) | node configuration | ✅ |
 | 06 | [Launch files](lessons/06-launch-files.md) | start many nodes at once | ✅ |
-| 07 | Actions | long-running goals (Nav2 `NavigateToPose`) | ⏳ |
+| 07 | [Actions](lessons/07-actions.md) | long-running goals (Nav2 `NavigateToPose`) | ✅ |
 | 08 | TF2 (basics) | coordinate frames / transforms | ⏳ |
 | 09 | RViz | visualize the robot & data | ⏳ |
 
 **Skipped for now** (not needed yet): lifecycle nodes, components, QoS deep-dives, rosbag.
+
+**Reference:** [Nav2 fundamentals](references/nav2-fundamentals.md) — how the navigation stack composes everything above (nodes+topics+services+params+launch+actions).
 
 > Foundation first. Once Level 1 is solid, we apply it in the [WareFleet](https://github.com/ShubhamDSACommitment/warefleet) project.
 
