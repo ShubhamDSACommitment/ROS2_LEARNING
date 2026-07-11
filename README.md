@@ -14,8 +14,8 @@ The building blocks I must understand before building WareFleet. Each lesson = o
 | 02 | [Workspace, package & node](lessons/02-workspace-package-node.md) | **workspace · package structure · colcon · executables · Nodes** | ✅ |
 | 03 | [Topics](lessons/03-topics.md) | publisher + subscriber | ✅ |
 | 04 | [Services](lessons/04-services.md) | server + client | ✅ |
-| 05 | Parameters | node configuration | ⏳ |
-| 06 | Launch files | start many nodes at once | ⏳ |
+| 05 | [Parameters](lessons/05-parameters.md) | node configuration | ✅ |
+| 06 | [Launch files](lessons/06-launch-files.md) | start many nodes at once | ✅ |
 | 07 | Actions | long-running goals (Nav2 `NavigateToPose`) | ⏳ |
 | 08 | TF2 (basics) | coordinate frames / transforms | ⏳ |
 | 09 | RViz | visualize the robot & data | ⏳ |
