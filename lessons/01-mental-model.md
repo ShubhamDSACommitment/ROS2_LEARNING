@@ -16,6 +16,20 @@
 
 **Key mental note:** there is **no master/roscore** in ROS 2. Nodes discover each other automatically via DDS.
 
+## 🔧 For a Go / Java / backend engineer
+ROS 2 is essentially a **distributed-microservices + message-bus framework**. Map it to what you know:
+
+| ROS 2 | Java / Spring | Go | ⚠️ leak |
+|---|---|---|---|
+| Node | a Spring Boot service (1 process, 1 job) | a `package main` binary | it's a process, not a class |
+| Topic (pub/sub) | JMS/Kafka topic — or **MQTT (Addverb!)** | network channel + broker | default fire-and-forget, **no persistence/replay** (≈ MQTT QoS 0) |
+| Message (`.msg`) | DTO/record; `.msg` ≈ **`.proto`** | `struct`; `.msg` ≈ `.proto` | an IDL that code-gens typed classes |
+| Service | gRPC unary / REST endpoint | `net/rpc` handler | synchronous request→response |
+| Action | `CompletableFuture` + progress + cancel | goroutine + `context` + progress chan | long job: goal→feedback→result, cancelable |
+| Parameter | `@Value` / `application.yml` | flags / env / Viper | per-node startup config |
+| DDS | Eureka/Consul discovery + broker | same, peer-to-peer | **decentralized — no master** |
+| `ros2` CLI | Actuator / `kubectl` / `kafka-console-consumer` | same | inspect the live system from outside |
+
 ## The ROS graph
 At runtime, the live set of nodes + the topics/services/actions connecting them = the **ROS graph**. You inspect it from *outside* any node with the `ros2` CLI (`ros2 node`, `ros2 topic`, ...). This is how you debug.
 

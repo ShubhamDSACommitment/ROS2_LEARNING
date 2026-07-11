@@ -27,6 +27,31 @@
 4. **Node** — a program built on `rclpy`. Pattern (see `hello_node.py`):
    `rclpy.init()` → create `Node` subclass → `rclpy.spin(node)` (process callbacks/timers) → `destroy_node()` + `rclpy.shutdown()`.
 
+## 🔧 For a Go / Java engineer
+It's your build/runtime story with different names:
+
+| ROS 2 | Java | Go |
+|---|---|---|
+| workspace (`ros2_ws/src`) | Maven/Gradle multi-module project | repo w/ multiple packages / `go.work` |
+| package (`hello_ros`) | a Maven module | a Go module/package |
+| `package.xml` | `pom.xml` (manifest + deps) | `go.mod` |
+| `setup.py` `entry_points` | `Main-Class` / Gradle `mainClass` | `func main` in `package main` |
+| `colcon build` | `mvn install` / `gradle build` | `go build ./...` |
+| `source install/setup.bash` | jar on the classpath | binary on `$PATH` |
+| `ros2 run hello_ros hello` | `java -jar app.jar` | `./binary` |
+
+And the node lifecycle in `hello_node.py`:
+```
+class HelloNode(Node)         ≈ a @Component service class / Go service struct
+super().__init__('hello_node')≈ spring.application.name — registers the service by name
+create_timer(1.0, self.tick)  ≈ @Scheduled(fixedRate=1000) / Go time.Ticker + select loop
+get_logger().info(...)        ≈ slf4j logger.info / log.Printf
+rclpy.init()                  ≈ bootstrap the framework (build app context)
+rclpy.spin(node)              ≈ SpringApplication.run() / http.ListenAndServe — the BLOCKING serve loop
+destroy_node(); shutdown()    ≈ graceful shutdown / ctx.cancel()
+```
+**Key insight:** `spin()` is the event loop. You *register handlers* (timers, subscriptions) in the constructor, then `spin()` hands the thread to ROS to dispatch them — exactly like defining `@KafkaListener`/HTTP routes then calling the blocking `run()`/`ListenAndServe()`. No `spin()` → handlers defined but nothing ever fires.
+
 ## Colcon — the build tool
 `colcon build` reads each package's `package.xml` + `setup.py`, builds them, and produces an `install/` "overlay." You then **source** that overlay so ROS can find your package:
 ```
