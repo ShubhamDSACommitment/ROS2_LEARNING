@@ -12,7 +12,7 @@ The building blocks I must understand before building WareFleet. Each lesson = o
 |---|---|---|---|
 | 01 | [Mental model](lessons/01-mental-model.md) | nodes · topics · services · actions · parameters · DDS · the graph | ✅ |
 | 02 | [Workspace, package & node](lessons/02-workspace-package-node.md) | **workspace · package structure · colcon · executables · Nodes** | ✅ |
-| 03 | Topics | publisher + subscriber | ⏳ |
+| 03 | [Topics](lessons/03-topics.md) | publisher + subscriber | ✅ |
 | 04 | Services | server + client | ⏳ |
 | 05 | Parameters | node configuration | ⏳ |
 | 06 | Launch files | start many nodes at once | ⏳ |
