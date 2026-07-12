@@ -17,8 +17,10 @@ The building blocks I must understand before building WareFleet. Each lesson = o
 | 05 | [Parameters](lessons/05-parameters.md) | node configuration | ✅ |
 | 06 | [Launch files](lessons/06-launch-files.md) | start many nodes at once | ✅ |
 | 07 | [Actions](lessons/07-actions.md) | long-running goals (Nav2 `NavigateToPose`) | ✅ |
-| 08 | TF2 (basics) | coordinate frames / transforms | ⏳ |
-| 09 | RViz | visualize the robot & data | ⏳ |
+| 08 | [TF2 (basics)](lessons/08-tf2.md) | coordinate frames / transforms | ✅ |
+| 09 | [RViz](lessons/09-rviz.md) | visualize the robot & data | ✅ |
+
+**🎉 Level 1 complete** — foundation done. Next: apply it in [WareFleet](https://github.com/ShubhamDSACommitment/warefleet).
 
 **Skipped for now** (not needed yet): lifecycle nodes, components, QoS deep-dives, rosbag.
 
